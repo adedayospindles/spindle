@@ -1,0 +1,21 @@
+/* Spindles editor styles: keep the block editor close to the front end. */
+body.block-editor-writing-flow,
+.editor-styles-wrapper {
+	font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+	color: #162337;
+	line-height: 1.7;
+}
+
+.editor-styles-wrapper a {
+	color: #2556a8;
+}
+
+.editor-styles-wrapper .alignleft {
+	float: left;
+	margin: 0.4em 1.5em 1em 0;
+}
+
+.editor-styles-wrapper .alignright {
+	float: right;
+	margin: 0.4em 0 1em 1.5em;
+}

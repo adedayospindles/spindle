@@ -1,0 +1,6 @@
+# Build output and local tooling
+*.zip
+node_modules/
+vendor/
+*.log
+.DS_Store

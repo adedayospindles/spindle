@@ -1,0 +1,406 @@
+/*
+ * Spindles design layer.
+ * Intentionally avoids global element selectors so builder widgets are not restyled.
+ */
+
+:root {
+	--sp-brand-soft: #eaf1ff;
+	--sp-surface: #f6f8fc;
+	--sp-shadow: 0 12px 38px rgba(16, 36, 69, 0.1);
+	--sp-space: clamp(1.25rem, 3vw, 3rem);
+}
+
+body {
+	font-synthesis: none;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Dark mode: every token that carries text or UI contrast is redefined here. */
+body.sp-mode-dark {
+	--sp-bg: #101826;
+	--sp-ink: #f1f5fc;
+	--sp-muted: #c2cede;
+	--sp-border: #38475b;
+	--sp-surface: #182336;
+	--sp-brand-soft: #172f55;
+	--sp-link: #9bbcff; /* 9.3:1 on --sp-bg. */
+	--sp-field-border: #8c99ab;
+	--sp-focus: #ec9e29;
+	color: var(--sp-ink);
+}
+
+body.sp-mode-dark .site-header,
+body.sp-mode-dark .primary-navigation .sub-menu {
+	background: var(--sp-bg);
+}
+
+body.sp-mode-dark .site-footer {
+	background: #090e17;
+}
+
+body.sp-mode-dark .site-header a,
+body.sp-mode-dark .entry-title a {
+	color: var(--sp-ink);
+}
+
+body.sp-mode-dark .site-header a.sp-header-cta {
+	color: #fff;
+}
+
+body.sp-mode-dark .post-card {
+	border-color: var(--sp-border);
+}
+
+/* Header. */
+.site-header {
+	position: relative;
+	z-index: 30;
+	box-shadow: 0 2px 12px rgba(24, 39, 65, 0.035);
+}
+
+.sp-position-sticky .site-header {
+	position: sticky;
+	top: 0;
+}
+
+body.admin-bar.sp-position-sticky .site-header {
+	top: 32px;
+}
+
+.site-title,
+.entry-title,
+.archive-header h1,
+.widget-title {
+	letter-spacing: -0.025em;
+}
+
+.site-main > .content-area {
+	width: 100%;
+}
+
+.entry-title,
+.archive-header h1 {
+	line-height: 1.22;
+}
+
+.site-header .primary-navigation a {
+	transition: color 0.18s ease;
+}
+
+.primary-navigation a:hover,
+.primary-navigation .current-menu-item > a {
+	color: var(--sp-link);
+}
+
+.sp-header-cta {
+	padding: 0.65rem 1.2rem;
+	background: var(--sp-brand);
+	color: #fff !important;
+	text-decoration: none;
+	border-radius: 999px;
+	white-space: nowrap;
+	font-weight: 700;
+}
+
+.sp-header-cta:hover {
+	filter: brightness(0.92);
+}
+
+.sp-header-centered .header-inner {
+	flex-wrap: wrap;
+	justify-content: center;
+	padding-block: 1rem;
+}
+
+.sp-header-centered .site-branding {
+	width: 100%;
+	text-align: center;
+}
+
+.sp-header-centered .custom-logo {
+	margin-inline: auto;
+}
+
+.sp-header-minimal .site-description {
+	display: none;
+}
+
+.sp-header-minimal .header-inner {
+	min-height: 68px;
+}
+
+.sp-header-minimal .primary-navigation a {
+	font-weight: 500;
+}
+
+/* Blog grid layout. */
+body.sp-blog-grid .site-main .content-area:has(.post-card) {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1.5rem;
+	align-content: start;
+}
+
+body.sp-blog-grid .site-main .content-area > .archive-header,
+body.sp-blog-grid .site-main .content-area > .navigation,
+body.sp-blog-grid .site-main .content-area > .page-header {
+	grid-column: 1 / -1;
+}
+
+.sp-blog-grid .post-card {
+	padding: 0 0 1.5rem;
+	border: 1px solid var(--sp-border);
+	border-radius: var(--sp-radius);
+	overflow: hidden;
+	background: var(--sp-bg);
+	margin: 0;
+}
+
+.sp-blog-grid .post-card > .entry-title,
+.sp-blog-grid .post-card > .entry-meta,
+.sp-blog-grid .post-card > .entry-summary,
+.sp-blog-grid .post-card > .read-more {
+	margin-inline: 1.25rem;
+}
+
+.sp-blog-grid .post-card-image img {
+	border-radius: 0;
+	aspect-ratio: 16 / 9;
+	object-fit: cover;
+}
+
+.post-card .read-more {
+	text-underline-offset: 3px;
+}
+
+/* Footer. */
+.site-footer {
+	padding-top: clamp(2rem, 5vw, 4rem);
+}
+
+.footer-widgets {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--sp-space);
+}
+
+.sp-footer-compact .site-footer {
+	padding: 1.25rem 0;
+}
+
+.footer-bottom {
+	border-top: 1px solid rgba(255, 255, 255, 0.17);
+	padding-top: 1.25rem;
+}
+
+.footer-widgets + .footer-bottom {
+	margin-top: 1rem;
+}
+
+.sp-back-to-top {
+	position: fixed;
+	bottom: 1.25rem;
+	right: 1.25rem;
+	z-index: 40;
+	border-radius: 50%;
+	background: var(--sp-brand);
+	color: #fff !important;
+	text-decoration: none;
+	box-shadow: var(--sp-shadow);
+	width: 2.7rem;
+	height: 2.7rem;
+	display: grid;
+	place-items: center;
+	font-size: 1.4rem;
+}
+
+.sp-detail-row {
+	display: grid;
+	grid-template-columns: minmax(110px, 1fr) 2fr;
+	padding: 0.7rem 0;
+	border-bottom: 1px solid var(--sp-border);
+}
+
+.sp-detail-row dt {
+	font-weight: 700;
+}
+
+.sp-detail-row dd {
+	margin: 0;
+}
+
+/* Elementor Theme Builder output rendered inside the theme's main landmark. */
+.sp-elementor-main {
+	display: block;
+}
+
+/* Modern Events Calendar: progressive enhancement. Default plugin markup remains untouched. */
+.mec-wrap :where(.mec-event-article, .mec-event-grid-classic, .mec-event-list-standard, .mec-single-event) {
+	border-radius: var(--sp-radius);
+}
+
+.mec-wrap :where(.mec-event-article, .mec-event-grid-classic) {
+	overflow: hidden;
+}
+
+.mec-wrap :where(.mec-event-title, .mec-event-title a) {
+	color: var(--sp-ink);
+	line-height: 1.25;
+}
+
+.mec-wrap :where(.mec-event-date, .mec-event-time) {
+	font-variant-numeric: tabular-nums;
+}
+
+.mec-wrap :where(.mec-event-article, .mec-event-list-standard) {
+	box-shadow: 0 2px 18px rgba(16, 36, 69, 0.045);
+}
+
+.mec-wrap :where(button, .mec-booking-button, .mec-event-more-info a) {
+	max-width: 100%;
+}
+
+/* WooCommerce: style core storefront surfaces without altering commerce functionality. */
+.woocommerce ul.products {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.6rem;
+}
+
+.woocommerce ul.products::before,
+.woocommerce ul.products::after {
+	display: none;
+}
+
+.woocommerce ul.products li.product {
+	width: auto !important;
+	float: none !important;
+	margin: 0 !important;
+	min-width: 0;
+	padding: 0 0 1.25rem !important;
+	border: 1px solid var(--sp-border);
+	border-radius: var(--sp-radius);
+	overflow: hidden;
+	background: var(--sp-bg);
+}
+
+.woocommerce ul.products li.product img {
+	margin: 0 0 1rem !important;
+	aspect-ratio: 1;
+	object-fit: cover;
+}
+
+.woocommerce ul.products li.product :where(.woocommerce-loop-product__title, .price, .button, .star-rating) {
+	margin-left: 1rem !important;
+	margin-right: 1rem !important;
+}
+
+.woocommerce ul.products li.product .button,
+.woocommerce .button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce a.button {
+	border-radius: 6px;
+	background: var(--sp-brand);
+	color: #fff;
+	padding: 0.75rem 1rem;
+}
+
+.woocommerce :where(.woocommerce-message, .woocommerce-info) {
+	border-top-color: var(--sp-brand);
+}
+
+.woocommerce .quantity .qty {
+	min-height: 2.5rem;
+}
+
+.woocommerce div.product div.images img {
+	border-radius: var(--sp-radius);
+}
+
+.woocommerce :where(.woocommerce-tabs, .cart_totals, .woocommerce-checkout-review-order) {
+	min-width: 0;
+}
+
+/* Builder-neutral page template. */
+.sp-builder-neutral .builder-neutral-content {
+	margin: 0;
+	min-width: 0;
+}
+
+.sp-builder-neutral .builder-neutral-content > article {
+	margin: 0;
+}
+
+.sp-builder-neutral .builder-neutral-content :where(img, iframe) {
+	max-width: 100%;
+}
+
+@media (max-width: 900px) {
+	.sp-header-centered .header-inner {
+		justify-content: space-between;
+	}
+
+	.sp-header-centered .site-branding {
+		width: auto;
+		text-align: left;
+	}
+
+	.site-header .sp-header-cta {
+		margin-left: auto;
+	}
+
+	.footer-widgets {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.woocommerce ul.products {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+/* The admin bar is 46px tall (and non-fixed below 600px) on small screens. */
+@media (max-width: 782px) {
+	body.admin-bar.sp-position-sticky .site-header {
+		top: 46px;
+	}
+}
+
+@media (max-width: 600px) {
+	.footer-widgets,
+	.woocommerce ul.products,
+	body.sp-blog-grid .site-main .content-area:has(.post-card) {
+		grid-template-columns: 1fr;
+	}
+
+	.site-header .sp-header-cta {
+		order: 2;
+	}
+
+	.site-header .primary-navigation {
+		order: 3;
+	}
+
+	.sp-detail-row {
+		grid-template-columns: 1fr;
+	}
+
+	.sp-back-to-top {
+		bottom: 0.75rem;
+		right: 0.75rem;
+	}
+
+	body.admin-bar.sp-position-sticky .site-header {
+		top: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+	}
+}

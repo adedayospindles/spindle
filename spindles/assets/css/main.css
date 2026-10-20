@@ -1,0 +1,518 @@
+/*
+ * Spindles foundation styles.
+ *
+ * Element-level rules are wrapped in :where() (zero specificity) and scoped to
+ * theme-owned components, so page builders and plugins can override them freely.
+ */
+
+:root {
+	--sp-container: 1200px;
+	--sp-ink: #162337;
+	--sp-brand: #2556a8;
+	--sp-link: var(--sp-brand);
+	--sp-muted: #526276;
+	--sp-border: #e0e6ee;
+	--sp-field-border: #718096; /* 4.0:1 on white (WCAG 1.4.11 needs 3:1). */
+	--sp-focus: #1a4fa0; /* 7.9:1 on white. */
+	--sp-bg: #fff;
+	--sp-radius: 10px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	background: var(--sp-bg);
+	color: var(--sp-ink);
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-size: 16px;
+	line-height: 1.7;
+}
+
+img,
+video,
+iframe {
+	max-width: 100%;
+}
+
+img {
+	height: auto;
+}
+
+figure {
+	margin: 0;
+}
+
+a {
+	color: var(--sp-link);
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+/* Focus: one visible indicator everywhere, with enough contrast on light and dark surfaces. */
+:where(a, button, input, select, textarea, summary):focus-visible {
+	outline: 3px solid var(--sp-focus);
+	outline-offset: 3px;
+}
+
+.site-footer :where(a, button, input, select, textarea):focus-visible {
+	outline-color: #ec9e29; /* 7.4:1 on the footer background. */
+}
+
+/* Floating button can sit over light or dark content: use a two-tone ring. */
+.sp-back-to-top:focus-visible {
+	outline: 3px solid #fff;
+	outline-offset: 0;
+	box-shadow: 0 0 0 6px #162337;
+}
+
+/* Theme-owned form controls only (not builder or plugin forms). */
+:where(.search-form, .comment-form, .widget, .post-password-form) :where(button, input[type="submit"]),
+.menu-toggle {
+	font: inherit;
+	cursor: pointer;
+	background: var(--sp-brand);
+	color: #fff;
+	border: 1px solid var(--sp-brand);
+	padding: 0.65rem 1.15rem;
+	border-radius: 6px;
+}
+
+:where(.search-form, .comment-form, .widget, .post-password-form) :where(input:not([type="checkbox"], [type="radio"], [type="submit"], [type="hidden"]), textarea, select) {
+	font: inherit;
+	max-width: 100%;
+	padding: 0.55rem;
+	border: 1px solid var(--sp-field-border);
+	border-radius: 5px;
+	background: var(--sp-bg);
+	color: var(--sp-ink);
+}
+
+.comment-form textarea {
+	width: 100%;
+}
+
+.container {
+	width: min(calc(100% - 2.5rem), var(--sp-container));
+	margin-inline: auto;
+}
+
+/* Header and navigation. */
+.site-header {
+	border-bottom: 1px solid var(--sp-border);
+	background: #fff;
+}
+
+.header-inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2rem;
+	min-height: 88px;
+}
+
+.site-branding .custom-logo {
+	display: block;
+	max-height: 64px;
+	width: auto;
+}
+
+.site-title {
+	font-size: 1.55rem;
+	font-weight: 800;
+	text-decoration: none;
+	color: var(--sp-ink);
+}
+
+.site-description {
+	font-size: 0.8rem;
+	color: var(--sp-muted);
+	margin: 0;
+}
+
+.primary-navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: 1.5rem;
+	flex-wrap: wrap;
+}
+
+.primary-navigation li {
+	position: relative;
+}
+
+.primary-navigation a {
+	text-decoration: none;
+	color: var(--sp-ink);
+	font-weight: 600;
+}
+
+.primary-navigation .sub-menu {
+	display: none;
+	position: absolute;
+	background: #fff;
+	z-index: 10;
+	min-width: 200px;
+	padding: 1rem;
+	box-shadow: 0 8px 24px rgba(21, 33, 57, 0.13);
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.primary-navigation li:hover > .sub-menu,
+.primary-navigation li:focus-within > .sub-menu {
+	display: flex;
+}
+
+/* The toggle only exists when JavaScript can operate it (see .has-js in functions). */
+.menu-toggle {
+	display: none;
+}
+
+/* Layout. */
+.site-main {
+	padding-block: 3rem 4.5rem;
+	min-height: 55vh;
+}
+
+.content-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+	gap: 4rem;
+}
+
+.content-layout:not(:has(.widget-area)) {
+	grid-template-columns: 1fr;
+}
+
+.content-area,
+.entry-content {
+	min-width: 0;
+}
+
+.entry-content > :first-child {
+	margin-top: 0;
+}
+
+.entry-content img {
+	height: auto;
+}
+
+.entry-content .alignwide {
+	max-width: calc(var(--sp-container) - 3rem);
+}
+
+.entry-content .alignfull {
+	width: 100%;
+}
+
+.entry-title {
+	line-height: 1.2;
+	overflow-wrap: anywhere;
+}
+
+.entry-title a {
+	text-decoration: none;
+	color: var(--sp-ink);
+}
+
+.entry-meta {
+	display: flex;
+	gap: 1rem;
+	color: var(--sp-muted);
+	font-size: 0.9rem;
+	margin-bottom: 1rem;
+}
+
+.post-card {
+	padding: 0 0 2.5rem;
+	margin-bottom: 2.5rem;
+	border-bottom: 1px solid var(--sp-border);
+}
+
+.post-card-image img,
+.featured-image img {
+	border-radius: var(--sp-radius);
+	width: 100%;
+	height: auto;
+}
+
+.post-card .entry-title {
+	margin: 0.8rem 0;
+}
+
+.read-more {
+	font-weight: 650;
+}
+
+.widget {
+	margin-bottom: 2rem;
+}
+
+.widget-title {
+	font-size: 1.2rem;
+}
+
+/* Footer. */
+.site-footer {
+	background: #122034;
+	color: #fff;
+	padding: 2.5rem 0;
+}
+
+.site-footer a {
+	color: #fff;
+}
+
+.footer-widgets {
+	padding-bottom: 2rem;
+}
+
+.footer-bottom {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.footer-bottom ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.full-width-content,
+.canvas-content {
+	padding: 0;
+	min-height: 0;
+}
+
+.full-width-content > .page,
+.canvas-content > .page {
+	margin: 0;
+}
+
+/* Accessibility helpers. */
+.screen-reader-text {
+	position: absolute !important;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	white-space: nowrap;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	clip: auto !important;
+	clip-path: none;
+	position: fixed !important;
+	top: 10px;
+	left: 10px;
+	width: auto;
+	height: auto;
+	margin: 0;
+	z-index: 100000;
+	padding: 1rem;
+	background: #fff;
+	color: #000;
+}
+
+/* Search form. */
+.search-row {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.search-row input {
+	flex: 1;
+	min-width: 0;
+}
+
+/* Tables in editor content only. */
+:where(.wp-block-table, .comment-content) table,
+.entry-content > table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+:where(.wp-block-table, .comment-content) :where(td, th),
+.entry-content > table :where(td, th) {
+	padding: 0.7rem;
+	border: 1px solid var(--sp-border);
+}
+
+.wp-block-image img {
+	height: auto;
+}
+
+/* WordPress core classes (required by the theme directory). */
+.alignleft {
+	float: left;
+	margin: 0.4em 1.5em 1em 0;
+}
+
+.alignright {
+	float: right;
+	margin: 0.4em 0 1em 1.5em;
+}
+
+.aligncenter {
+	display: block;
+	clear: both;
+	margin-inline: auto;
+}
+
+.wp-caption {
+	max-width: 100%;
+	margin-bottom: 1.5em;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-inline: auto;
+}
+
+.wp-caption-text,
+.wp-caption .wp-caption-text,
+.gallery-caption {
+	margin: 0.5em 0 0;
+	color: var(--sp-muted);
+	font-size: 0.875rem;
+	text-align: center;
+}
+
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	gap: 1rem;
+	margin-bottom: 1.5em;
+}
+
+.gallery-item {
+	margin: 0;
+}
+
+.sticky {
+	border-left: 4px solid var(--sp-brand);
+	padding-left: 1.25rem;
+}
+
+/* Comments. */
+.comments-area {
+	margin-top: 3rem;
+}
+
+.comment-list,
+.comment-list .children {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.comment-list .children {
+	margin-left: 1.5rem;
+}
+
+.comment-body {
+	padding: 1.25rem 0;
+	border-bottom: 1px solid var(--sp-border);
+}
+
+.comment-author .avatar {
+	float: left;
+	margin-right: 0.75rem;
+	border-radius: 50%;
+}
+
+.comment-meta {
+	font-size: 0.875rem;
+	color: var(--sp-muted);
+}
+
+.bypostauthor > .comment-body {
+	background: var(--sp-brand-soft, #eaf1ff);
+	border-left: 4px solid var(--sp-brand);
+	padding-left: 1rem;
+}
+
+.comment-reply-link {
+	font-weight: 650;
+}
+
+@media (max-width: 900px) {
+	.content-layout {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+	}
+
+	.header-inner {
+		flex-wrap: wrap;
+		padding-block: 1rem;
+	}
+
+	/* Progressive enhancement: collapse the menu only when JavaScript is available. */
+	.has-js .menu-toggle {
+		display: block;
+		margin-left: auto;
+	}
+
+	.primary-navigation {
+		flex-basis: 100%;
+	}
+
+	.has-js .primary-navigation {
+		display: none;
+	}
+
+	.has-js .primary-navigation.is-open {
+		display: block;
+	}
+
+	.primary-navigation ul {
+		flex-direction: column;
+		gap: 0.7rem;
+	}
+
+	.primary-navigation .sub-menu {
+		display: flex;
+		position: static;
+		box-shadow: none;
+		padding: 0.5rem 1rem;
+	}
+
+	.site-main {
+		padding-block: 2rem;
+	}
+
+	.alignleft,
+	.alignright {
+		float: none;
+		display: block;
+		margin-inline: auto;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}

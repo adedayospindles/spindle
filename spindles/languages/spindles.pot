@@ -1,0 +1,268 @@
+# Copyright (C) 2026 ASA Solutions
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Spindles 2.1.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/spindles\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-20T09:23:33+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: spindles\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Spindles"
+msgstr ""
+
+#. Theme URI of the theme
+#. Author URI of the theme
+#: style.css
+msgid "https://asasolutionsltd.com/"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Accessible, responsive, design-system-led, builder-friendly WordPress theme with independent native templates, theme.json design tokens, and optional Elementor, WooCommerce, ACF and Modern Events Calendar integration."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "ASA Solutions"
+msgstr ""
+
+#: 404.php:13
+msgid "Page not found"
+msgstr ""
+
+#: 404.php:14
+msgid "We could not find that page. Try searching instead."
+msgstr ""
+
+#: 404.php:15
+msgid "Search from error page"
+msgstr ""
+
+#. translators: 1: Number of comments, 2: Post title.
+#: comments.php:19
+#, php-format
+msgctxt "comments title"
+msgid "%1$s comment on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s comments on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:44
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:39
+msgid "Footer navigation"
+msgstr ""
+
+#: footer.php:50
+#: footer.php:51
+msgid "Back to top"
+msgstr ""
+
+#: header.php:17
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:32
+msgid "Menu"
+msgstr ""
+
+#: header.php:33
+msgid "Primary navigation"
+msgstr ""
+
+#: inc/customizer-advanced.php:60
+msgid "Spindles Design System"
+msgstr ""
+
+#: inc/customizer-advanced.php:66
+msgid "Brand & typography"
+msgstr ""
+
+#: inc/customizer-advanced.php:67
+msgid "Header options"
+msgstr ""
+
+#: inc/customizer-advanced.php:68
+msgid "Footer options"
+msgstr ""
+
+#: inc/customizer-advanced.php:69
+msgid "Content options"
+msgstr ""
+
+#: inc/customizer-advanced.php:83
+msgid "Accent color"
+msgstr ""
+
+#: inc/customizer-advanced.php:84
+msgid "Text color"
+msgstr ""
+
+#: inc/customizer-advanced.php:87
+msgid "Color mode"
+msgstr ""
+
+#: inc/customizer-advanced.php:91
+msgid "Light"
+msgstr ""
+
+#: inc/customizer-advanced.php:92
+msgid "Dark"
+msgstr ""
+
+#: inc/customizer-advanced.php:97
+msgid "Header layout"
+msgstr ""
+
+#: inc/customizer-advanced.php:101
+msgid "Standard"
+msgstr ""
+
+#: inc/customizer-advanced.php:102
+msgid "Centered brand"
+msgstr ""
+
+#: inc/customizer-advanced.php:103
+msgid "Minimal"
+msgstr ""
+
+#: inc/customizer-advanced.php:108
+msgid "Header position"
+msgstr ""
+
+#: inc/customizer-advanced.php:112
+msgid "Normal"
+msgstr ""
+
+#: inc/customizer-advanced.php:113
+msgid "Sticky"
+msgstr ""
+
+#: inc/customizer-advanced.php:116
+msgid "Show site tagline"
+msgstr ""
+
+#: inc/customizer-advanced.php:117
+msgid "Header button label"
+msgstr ""
+
+#: inc/customizer-advanced.php:118
+msgid "Header button URL"
+msgstr ""
+
+#: inc/customizer-advanced.php:121
+msgid "Footer layout"
+msgstr ""
+
+#: inc/customizer-advanced.php:125
+msgid "Widget columns"
+msgstr ""
+
+#: inc/customizer-advanced.php:126
+msgid "Compact"
+msgstr ""
+
+#: inc/customizer-advanced.php:129
+msgid "Footer copyright text (optional)"
+msgstr ""
+
+#: inc/customizer-advanced.php:130
+msgid "Show back-to-top link"
+msgstr ""
+
+#: inc/customizer-advanced.php:133
+msgid "Blog layout"
+msgstr ""
+
+#: inc/customizer-advanced.php:137
+msgid "List"
+msgstr ""
+
+#: inc/customizer-advanced.php:138
+msgid "Grid"
+msgstr ""
+
+#: inc/theme.php:41
+msgid "Primary Navigation"
+msgstr ""
+
+#: inc/theme.php:42
+msgid "Footer Navigation"
+msgstr ""
+
+#: inc/theme.php:101
+#: sidebar.php:10
+msgid "Sidebar"
+msgstr ""
+
+#. translators: %d: Footer widget area number.
+#: inc/theme.php:113
+#, php-format
+msgid "Footer %d"
+msgstr ""
+
+#: inc/theme.php:141
+msgid "Spindles Layout"
+msgstr ""
+
+#: inc/theme.php:156
+msgid "Content width (pixels)"
+msgstr ""
+
+#: inc/theme.php:214
+msgid "Read more"
+msgstr ""
+
+#: index.php:14
+msgid "Latest posts"
+msgstr ""
+
+#. translators: %s: Search query.
+#: search.php:17
+#, php-format
+msgid "Search results for: %s"
+msgstr ""
+
+#: searchform.php:9
+msgid "Site search"
+msgstr ""
+
+#: searchform.php:12
+#: searchform.php:15
+msgid "Search"
+msgstr ""
+
+#: template-parts/content-none.php:10
+msgid "Nothing found"
+msgstr ""
+
+#: template-parts/content-none.php:11
+msgid "Try another search or browse the site."
+msgstr ""
+
+#: template-parts/content-none.php:12
+msgid "Search again"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Builder Neutral"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Builder Canvas (No Header or Footer)"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Full Width"
+msgstr ""
